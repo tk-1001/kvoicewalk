@@ -38,7 +38,7 @@ def main():
                       default=10000)
     parser.add_argument("--output_name", type=str,
                       help="Filename for the generated output audio",
-                        default="my_new_voice")
+                        default="my_new_voice.wav")
 
     # Arguments for random walk mode
     group_walk = parser.add_argument_group('Random Walk Mode')

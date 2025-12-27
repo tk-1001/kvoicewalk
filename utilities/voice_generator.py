@@ -2,10 +2,13 @@ import torch
 
 
 class VoiceGenerator:
-    def __init__(self, voices: list[torch.Tensor], starting_voice: str | None):
-        self.voices = voices
+    def __init__(self, voices: list[torch.Tensor], starting_voice: str | None, device: str = 'cuda'):
+        self.device = torch.device(device if torch.cuda.is_available() else 'cpu')
 
-        self.stacked = torch.stack(voices,dim=0)
+        #self.voices = voices
+        self.voices = [v.to(self.device) for v in voices]
+
+        self.stacked = torch.stack(self.voices,dim=0)
         self.mean = self.stacked.mean(dim=0)
         self.std = self.stacked.std(dim=0)
         self.min = self.stacked.min(dim=0)[0]

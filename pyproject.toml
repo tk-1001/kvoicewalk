@@ -11,5 +11,6 @@ dependencies = [
     "resemblyzer>=0.1.4",
     "soundfile>=0.13.1",
     "torch>=2.7.0",
+    "torchaudio>=2.7.0,<2.8.0",
     "tqdm>=4.67.1",
 ]
